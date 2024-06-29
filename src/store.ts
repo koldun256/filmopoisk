@@ -3,11 +3,13 @@ import { api } from "./services/api";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import searchSlice from "./features/search/searchSlice";
+import authSlice from "./features/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     search: searchSlice,
+    auth: authSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

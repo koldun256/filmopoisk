@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
+import Header from "../../components/Header/Header";
 
 export default function MovieDetailsPage() {
   const { id } = useParams();
@@ -8,6 +9,7 @@ export default function MovieDetailsPage() {
   if (error) return <div>Error</div>;
   return (
     <div>
+      <Header />
       <h1>Movie Details</h1>
       <h2>{movie!.title}</h2>
       <p>{movie!.description}</p>

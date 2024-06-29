@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  width: 100vw;
+  margin: 0;
+  padding: 10px;
+  background-color: rgb(219, 207, 39);
+}
+
+.title {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+}

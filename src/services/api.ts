@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { ShortMovieInfo } from "../models/movie";
 import { GenresEnglish } from "../models/movie";
+import { RootState } from "../store";
 
 export type SearchQuery = Partial<{
   title: string;
@@ -17,9 +18,18 @@ export type SearchResponse = {
   total_pages: number;
 };
 
+const baseQuery = fetchBaseQuery({
+  baseUrl: "http://localhost:3030/api/v1/",
+  prepareHeaders: (headers, { getState }) => {
+    const token = (getState() as RootState).auth.token;
+    if (token) headers.set("Authorization", `Bearer ${token}`);
+    return headers;
+  },
+});
+
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3030/api/v1/" }),
+  baseQuery,
   endpoints: (builder) => ({
     getMovieById: builder.query<ShortMovieInfo, string>({
       query: (id) => `movie/${id}`,
