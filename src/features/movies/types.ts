@@ -37,3 +37,18 @@ export type ShortMovieInfo = Omit<
   FullMovieInfo,
   "actors" | "total_rates_count"
 >;
+
+export type SearchQuery = Partial<{
+  title: string;
+  genre: GenresEnglish;
+  release_year: string;
+  sort_by: "release_year" | "title" | "rating";
+  order: "asc" | "desc";
+  page: number;
+  limit: number;
+}>;
+
+export type SearchResponse = {
+  search_result: ShortMovieInfo[];
+  total_pages: number;
+};

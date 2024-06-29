@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { ShortMovieInfo } from "./types";
+import type { SearchQuery, SearchResponse, ShortMovieInfo } from "./types";
 
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
@@ -8,7 +8,13 @@ export const moviesApi = createApi({
     getMovieById: builder.query<ShortMovieInfo, string>({
       query: (id) => `movie/${id}`,
     }),
+    search: builder.query<SearchResponse, SearchQuery>({
+      query: (params) => ({
+        url: `search/`,
+        params,
+      }),
+    }),
   }),
 });
 
-export const { useGetMovieByIdQuery } = moviesApi;
+export const { useGetMovieByIdQuery, useSearchQuery } = moviesApi;
