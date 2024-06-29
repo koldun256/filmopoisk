@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
-enum LoginStatus {
+export enum LoginStatus {
   LoggedOut,
   LoggedIn,
   Failed,
@@ -14,7 +14,7 @@ type State = {
 };
 
 const initialState: State = { token: null, status: LoginStatus.LoggedOut };
-
+type Creds = { username: string; password: string };
 export const login = createAsyncThunk("auth/login", async (creds: Creds) => {
   const response = await fetch("http://localhost:3030/api/v1/login", {
     method: "POST",
