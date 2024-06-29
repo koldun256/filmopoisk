@@ -1,8 +1,19 @@
-import { useSearchQuery } from "../../features/movies/moviesSlice";
+import { Link } from "react-router-dom";
+import Movie from "../../components/Movie/Movie";
+import { api } from "../../services/api";
 export default function HomePage() {
-  const { data, error, isLoading } = useSearchQuery({});
-  if (isLoading) return <div>Loading....</div>;
-  const { search_result, total_pages } = data!;
-  const movies = search_result.map((movie) => <div>{movie.title}</div>);
-  return <div>{movies}</div>;
+  const { data, error, isLoading } = api.useSearchQuery({});
+
+  return (
+    <div>
+      {isLoading && "Loading..."}
+      {error && "Error"}
+      {data &&
+        data.search_result.map((movie) => (
+          <Link to={`/movie/${movie.id}`} key={movie.id}>
+            <Movie {...movie} />
+          </Link>
+        ))}
+    </div>
+  );
 }
