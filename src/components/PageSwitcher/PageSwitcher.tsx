@@ -1,3 +1,4 @@
+"use client";
 import useAppSearchParams from "../../features/search/searchSlice";
 import classes from "./PageSwitcher.module.css";
 import left from "./left.svg";

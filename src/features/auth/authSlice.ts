@@ -18,7 +18,8 @@ type State = {
   status: LoginStatus;
 };
 
-const savedToken = localStorage.getItem("token");
+// const savedToken = localStorage.getItem("token");
+const savedToken = null;
 const initialState: State = savedToken
   ? { token: savedToken, status: LoginStatus.LoggedIn }
   : { token: null, status: LoginStatus.LoggedOut };
@@ -68,7 +69,7 @@ authStorageListener.startListening.withTypes<RootState, AppDispatch>()({
     currentState.auth.token != originalState.auth.token,
   effect: (_, listenerApi) => {
     const { token } = listenerApi.getState().auth;
-    localStorage.setItem("token", token || "");
+    // localStorage.setItem("token", token || "");
   },
 });
 

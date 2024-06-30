@@ -1,8 +1,10 @@
+"use client";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../store";
 import { LoginStatus, login, selectStatus } from "../../authSlice";
 import ReactDOM from "react-dom";
 import classes from "./LoginDialog.module.css";
+import { UnknownAction } from "@reduxjs/toolkit";
 
 type Props = {
   open: boolean;
@@ -14,13 +16,13 @@ export default function LoginDialog({ open, close }: Props) {
   const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
   const onSubmit = () => {
-    dispatch(login({ username, password }));
+    dispatch(login({ username, password }) as UnknownAction);
     setUsername("");
     setPassword("");
   };
 
   if (status == LoginStatus.LoggedIn) close();
-  return ReactDOM.createPortal(
+  return (
     <dialog open={open} className={classes.tint}>
       <div className={classes.window}>
         <h3>Авторизация</h3>
@@ -58,7 +60,6 @@ export default function LoginDialog({ open, close }: Props) {
           </button>
         </div>
       </div>
-    </dialog>,
-    document.body
+    </dialog>
   );
 }

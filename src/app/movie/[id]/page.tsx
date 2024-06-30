@@ -1,21 +1,26 @@
-import { useParams } from "react-router-dom";
-import { api } from "../../services/api";
-import Header from "../../components/Header/Header";
-import classes from "./MovieDetailsPage.module.css";
-import { useAppSelector } from "../../store";
-import { selectLoggedIn } from "../../features/auth/authSlice";
-import ScoreBar from "../../features/score/ui/ScoreBar/ScoreBar";
+"use client";
+import { selectLoggedIn } from "../../../features/auth/authSlice";
+import ScoreBar from "../../../features/score/ui/ScoreBar/ScoreBar";
+import { api } from "../../../services/api";
+import { useAppSelector } from "../../../store";
+import classes from "./page.module.css";
 
-export default function MovieDetailsPage() {
-  const { id } = useParams();
-  if (!id) return <div>No movie selected</div>;
+export default function MovieDetailsPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  if (!params.id) return <div>No movie selected</div>;
   const loggedIn = useAppSelector(selectLoggedIn);
-  const { data: movie, error, isLoading } = api.useGetMovieByIdQuery(id!);
+  const {
+    data: movie,
+    error,
+    isLoading,
+  } = api.useGetMovieByIdQuery(params.id!);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error</div>;
   return (
-    <div>
-      <Header />
+    <main>
       <div className={classes.info}>
         <img src={movie!.poster} />
         <div>
@@ -33,7 +38,7 @@ export default function MovieDetailsPage() {
         </div>
         {loggedIn && (
           <div className={classes.scoreContainer}>
-            <ScoreBar movieId={parseInt(id!)} />
+            <ScoreBar movieId={parseInt(params.id)} />
           </div>
         )}
       </div>
@@ -50,6 +55,6 @@ export default function MovieDetailsPage() {
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

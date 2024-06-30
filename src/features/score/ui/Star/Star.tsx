@@ -1,3 +1,4 @@
+"use client";
 import checkedSvg from "./star-checked.svg";
 import uncheckedSvg from "./star-unchecked.svg";
 type Props = {
