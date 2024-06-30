@@ -21,6 +21,7 @@ export default function useAppSearchParams<T extends keyof SearchQuery>(): [
   return [
     { ...defaultQuery, ...parsedParams },
     (key, val) => {
+      if (key != "page") parsedParams.page = "1";
       if (!val) delete parsedParams[key];
       else parsedParams[key] = val?.toString();
       setSearchParams(parsedParams);
