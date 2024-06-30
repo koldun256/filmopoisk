@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import Movie from "../../components/Movie/Movie";
 import { api } from "../../services/api";
-import { selectQuery } from "../../features/search/searchSlice";
-import { useAppSelector } from "../../store";
+import useAppSearchParams from "../../features/search/searchSlice";
 import classes from "./MovieList.module.css";
 import PageSwitcher from "../PageSwitcher/PageSwitcher";
 export default function MovieList() {
-  const searchQuery = useAppSelector(selectQuery);
+  const [searchQuery] = useAppSearchParams();
   const { data, error, isLoading } = api.useSearchQuery(searchQuery);
   if (isLoading) return "Loading...";
   if (error) return "Error";

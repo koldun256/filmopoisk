@@ -2,14 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./services/api";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useDispatch, useSelector, useStore } from "react-redux";
-import searchSlice from "./features/search/searchSlice";
 import authSlice, { authMiddleware } from "./features/auth/authSlice";
 import scoreSlice, { scoreMiddleware } from "./features/score/scoreSlice";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    search: searchSlice,
     auth: authSlice,
     score: scoreSlice,
   },

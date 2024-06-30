@@ -1,7 +1,6 @@
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { GENRES_MAP, GenresEnglish, YEARS } from "../../../../models/movie";
-import { useAppDispatch, useAppSelector } from "../../../../store";
-import { selectQuery, setSearchParam } from "../../searchSlice";
+import useAppSearchParams from "../../searchSlice";
 import classes from "./SearchParams.module.css";
 
 const genreOptions: {
@@ -20,8 +19,7 @@ const yearOptions = [
   ...Object.entries(YEARS).map(([value, text]) => ({ value, text })),
 ];
 export default function SearchParams() {
-  const { genre, release_year } = useAppSelector(selectQuery);
-  const dispatch = useAppDispatch();
+  const [{ genre, release_year }, setParam] = useAppSearchParams();
   return (
     <div className={classes.panel}>
       <div className={classes.title}>Фильтр</div>
@@ -29,7 +27,7 @@ export default function SearchParams() {
         <div className={classes.label}>Жанр</div>
         <Dropdown
           options={genreOptions}
-          select={(genre) => dispatch(setSearchParam(["genre", genre]))}
+          select={(genre) => setParam("genre", genre)}
           selected={genre}
         />
       </div>
@@ -37,7 +35,7 @@ export default function SearchParams() {
         <div className={classes.label}>Год</div>
         <Dropdown
           options={yearOptions}
-          select={(year) => dispatch(setSearchParam(["release_year", year]))}
+          select={(year) => setParam("release_year", year)}
           selected={release_year}
         />
       </div>
