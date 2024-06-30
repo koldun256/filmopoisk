@@ -9,8 +9,10 @@ export default function FeedPage() {
     <>
       <Header />
       <main className={classes.feedPage}>
-        <SearchParams />
-        <div>
+        <div className={classes.col1}>
+          <SearchParams />
+        </div>
+        <div className={classes.col2}>
           <SearchInput />
           <MovieList />
         </div>

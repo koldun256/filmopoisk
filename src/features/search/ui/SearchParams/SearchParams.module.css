@@ -1,0 +1,22 @@
+.panel {
+  background-color: white;
+  padding: 24px;
+  width: 360px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
