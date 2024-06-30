@@ -1,5 +1,6 @@
 import { createListenerMiddleware, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
+import { api } from "../../services/api";
 
 export type Score = 1 | 2 | 3 | 4 | 5;
 type State = Record<number, Score | null>;
@@ -34,7 +35,14 @@ export default scoreSlice.reducer;
 const storageListener = createListenerMiddleware();
 storageListener.startListening({
   actionCreator: scoreSlice.actions.setScore,
-  effect: async (action: SetScoreAction) => {
+  effect: async (action: SetScoreAction, listenerApi) => {
+    if (action.payload.score != null)
+      listenerApi.dispatch(
+        api.endpoints.rateMovie.initiate({
+          movieId: action.payload.id,
+          user_rate: action.payload.score,
+        })
+      );
     localStorage.setItem(
       `score.${action.payload.id}`,
       action.payload.score?.toString() ?? ""

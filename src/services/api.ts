@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { FullMovieInfo, ShortMovieInfo } from "../models/movie";
 import { GenresEnglish } from "../models/movie";
 import { RootState } from "../store";
+import { Score } from "../features/score/scoreSlice";
 
 export type SearchQuery = {
   title?: string;
@@ -39,6 +40,9 @@ export const api = createApi({
         url: `search/`,
         params,
       }),
+    }),
+    rateMovie: builder.mutation<null, { movieId: number; user_rate: Score }>({
+      query: (body) => ({ url: "rateMovie", method: "POST", body }),
     }),
   }),
 });
