@@ -1,12 +1,20 @@
 import SearchInput from "../../features/search/ui/SearchInput/SearchInput";
 import MovieList from "../../components/MovieList/MovieList";
 import Header from "../../components/Header/Header";
-export default function HomePage() {
+import classes from "./FeedPage.module.css";
+import SearchParams from "../../features/search/ui/SearchParams/SearchParams";
+export default function FeedPage() {
+  console.log(classes);
   return (
-    <div>
+    <>
       <Header />
-      <SearchInput />
-      <MovieList />
-    </div>
+      <main className={classes.feedPage}>
+        <SearchParams />
+        <div>
+          <SearchInput />
+          <MovieList />
+        </div>
+      </main>
+    </>
   );
 }
