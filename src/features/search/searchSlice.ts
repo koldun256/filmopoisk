@@ -17,7 +17,8 @@ export default function useAppSearchParams<T extends keyof SearchQuery>(): [
   SetParam<T>
 ] {
   const [searchParams, setSearchParams] = useSearchParams();
-  const parsedParams = Object.fromEntries(searchParams);
+  const parsedParams: Record<string, any> = Object.fromEntries(searchParams);
+  if (parsedParams.page) parsedParams.page = parseInt(parsedParams.page);
   return [
     { ...defaultQuery, ...parsedParams },
     (key, val) => {
