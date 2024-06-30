@@ -1,3 +1,4 @@
+"use client";
 import { selectLoggedIn } from "../../features/auth/authSlice";
 import ScoreBar from "../../features/score/ui/ScoreBar/ScoreBar";
 import { ShortMovieInfo } from "../../models/movie";

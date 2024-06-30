@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+"use client";
+import Link from "next/link";
 import Movie from "../../components/Movie/Movie";
 import { api } from "../../services/api";
 import useAppSearchParams from "../../features/search/searchSlice";
@@ -15,7 +16,7 @@ export default function MovieList() {
   return (
     <div className={classes.movieList}>
       {search_result.map((movie: ShortMovieInfo) => (
-        <Link to={`/movie/${movie.id}`} key={movie.id}>
+        <Link href={`/movie/${movie.id}`} key={movie.id}>
           <Movie {...movie} />
         </Link>
       ))}

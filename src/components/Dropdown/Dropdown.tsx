@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import classes from "./Dropdown.module.css";
 

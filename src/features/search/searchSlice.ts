@@ -1,5 +1,5 @@
 import { SearchQuery } from "../../services/api";
-import { useSearchParams } from "react-router-dom";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 const defaultQuery: SearchQuery = {
   sort_by: "rating",
@@ -16,7 +16,10 @@ export default function useAppSearchParams<T extends keyof SearchQuery>(): [
   SearchQuery,
   SetParam<T>
 ] {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const parsedParams: Record<string, any> = Object.fromEntries(searchParams);
   if (parsedParams.page) parsedParams.page = parseInt(parsedParams.page);
   return [
@@ -25,7 +28,9 @@ export default function useAppSearchParams<T extends keyof SearchQuery>(): [
       if (key != "page") parsedParams.page = "1";
       if (!val) delete parsedParams[key];
       else parsedParams[key] = val?.toString();
-      setSearchParams(parsedParams);
+
+      const paramsStr = new URLSearchParams(parsedParams).toString();
+      router.push(pathname + "?" + paramsStr);
     },
   ];
 }

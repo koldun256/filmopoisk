@@ -1,3 +1,4 @@
+"use client";
 import classes from "./SearchInput.module.css";
 import useAppSearchParams from "../../searchSlice";
 import { useEffect, useState } from "react";

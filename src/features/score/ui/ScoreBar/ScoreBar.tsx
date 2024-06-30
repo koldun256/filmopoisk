@@ -1,3 +1,4 @@
+"use client";
 import { useAppDispatch, useAppSelector } from "../../../../store";
 import { Score, selectScore, setScore } from "../../scoreSlice";
 import classes from "./ScoreBar.module.css";

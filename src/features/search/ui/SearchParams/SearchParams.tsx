@@ -1,3 +1,4 @@
+"use client";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { GENRES_MAP, GenresEnglish, YEARS } from "../../../../models/movie";
 import useAppSearchParams from "../../searchSlice";
