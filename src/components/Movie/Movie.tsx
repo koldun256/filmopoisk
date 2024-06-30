@@ -11,20 +11,22 @@ export default function Movie(info: ShortMovieInfo) {
       <div className={classes.info}>
         <div className={classes.title}>{info.title}</div>
         <table>
-          <tr>
-            <td className={classes.hint}>Жанр</td>
-            <td className={classes.data}>
-              {info.genre.charAt(0).toUpperCase() + info.genre.slice(1)}
-            </td>
-          </tr>
-          <tr>
-            <td className={classes.hint}>Год выпуска</td>
-            <td className={classes.data}>{info.release_year}</td>
-          </tr>
-          <tr>
-            <td className={classes.hint}>Описание</td>
-            <td className={classes.data}>{info.description}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className={classes.hint}>Жанр</td>
+              <td className={classes.data}>
+                {info.genre.charAt(0).toUpperCase() + info.genre.slice(1)}
+              </td>
+            </tr>
+            <tr>
+              <td className={classes.hint}>Год выпуска</td>
+              <td className={classes.data}>{info.release_year}</td>
+            </tr>
+            <tr>
+              <td className={classes.hint}>Описание</td>
+              <td className={classes.data}>{info.description}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
       {loggedIn && (

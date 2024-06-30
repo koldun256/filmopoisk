@@ -41,7 +41,7 @@ export default function MovieDetailsPage() {
       <div className={classes.actors}>
         <div className={classes.actorsContainer}>
           {movie!.actors.map((actor) => (
-            <div className={classes.actor}>
+            <div className={classes.actor} key={actor.name}>
               <div className={classes.posterContainer}>
                 <img src={actor.photo} />
               </div>
