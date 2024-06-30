@@ -25,9 +25,13 @@ export default function Movie(info: ShortMovieInfo) {
             <td className={classes.hint}>Описание</td>
             <td className={classes.data}>{info.description}</td>
           </tr>
-          {/* {loggedIn && <ScoreBar movieId={info.id} />} */}
         </table>
       </div>
+      {loggedIn && (
+        <div className={classes.scoreContainer}>
+          <ScoreBar movieId={info.id} />
+        </div>
+      )}
     </div>
   );
 }

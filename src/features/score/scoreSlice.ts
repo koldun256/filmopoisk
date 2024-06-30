@@ -2,7 +2,7 @@ import { createListenerMiddleware, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
 export type Score = 1 | 2 | 3 | 4 | 5;
-type State = Record<number, Score>;
+type State = Record<number, Score | null>;
 
 function readStorage() {
   const ans: State = {};
@@ -15,7 +15,7 @@ function readStorage() {
   return ans;
 }
 
-type SetScoreAction = { payload: { id: number; score: Score } };
+type SetScoreAction = { payload: { id: number; score: Score | null } };
 const scoreSlice = createSlice({
   name: "score",
   initialState: readStorage(),
@@ -35,10 +35,9 @@ const storageListener = createListenerMiddleware();
 storageListener.startListening({
   actionCreator: scoreSlice.actions.setScore,
   effect: async (action: SetScoreAction) => {
-    console.log("asdf");
     localStorage.setItem(
       `score.${action.payload.id}`,
-      action.payload.score.toString()
+      action.payload.score?.toString() ?? ""
     );
   },
 });
