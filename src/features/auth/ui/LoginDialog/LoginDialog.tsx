@@ -40,6 +40,7 @@ export default function LoginDialog({ open, close }: Props) {
           </label>
           <br />
           <input
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
