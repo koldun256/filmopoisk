@@ -3,7 +3,7 @@ import { api } from "./services/api";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import searchSlice from "./features/search/searchSlice";
-import authSlice from "./features/auth/authSlice";
+import authSlice, { authMiddleware } from "./features/auth/authSlice";
 import scoreSlice, { scoreMiddleware } from "./features/score/scoreSlice";
 
 export const store = configureStore({
@@ -14,7 +14,10 @@ export const store = configureStore({
     score: scoreSlice,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware).concat(scoreMiddleware),
+    getDefaultMiddleware()
+      .concat(api.middleware)
+      .concat(scoreMiddleware)
+      .concat(authMiddleware),
 });
 
 setupListeners(store.dispatch);

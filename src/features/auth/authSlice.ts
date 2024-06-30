@@ -1,5 +1,10 @@
-import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
+import {
+  AsyncThunk,
+  createAsyncThunk,
+  createListenerMiddleware,
+  createSlice,
+} from "@reduxjs/toolkit";
+import { AppDispatch, RootState } from "../../store";
 
 export enum LoginStatus {
   LoggedOut,
@@ -13,7 +18,11 @@ type State = {
   status: LoginStatus;
 };
 
-const initialState: State = { token: null, status: LoginStatus.LoggedOut };
+const savedToken = localStorage.getItem("token");
+const initialState: State = savedToken
+  ? { token: savedToken, status: LoginStatus.LoggedIn }
+  : { token: null, status: LoginStatus.LoggedOut };
+
 type Creds = { username: string; password: string };
 export const login: AsyncThunk<string, Creds, any> = createAsyncThunk<
   string,
@@ -25,7 +34,8 @@ export const login: AsyncThunk<string, Creds, any> = createAsyncThunk<
     body: JSON.stringify(creds),
   });
   if (!response.ok) throw Error("invalid credentails");
-  return (await response.json()).token;
+  const { token } = await response.json();
+  return token;
 });
 
 const authSlice = createSlice({
@@ -52,6 +62,17 @@ const authSlice = createSlice({
   },
 });
 
+const authStorageListener = createListenerMiddleware();
+authStorageListener.startListening.withTypes<RootState, AppDispatch>()({
+  predicate: (_, currentState, originalState) =>
+    currentState.auth.token != originalState.auth.token,
+  effect: (_, listenerApi) => {
+    const { token } = listenerApi.getState().auth;
+    localStorage.setItem("token", token || "");
+  },
+});
+
+export const authMiddleware = [authStorageListener.middleware];
 export const { logOut } = authSlice.actions;
 export default authSlice.reducer;
 
