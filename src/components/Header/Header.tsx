@@ -15,7 +15,7 @@ export default function Header() {
       </Link>
       {loggedIn && (
         <div className={classes.ava}>
-          <img src={person}></img>
+          <img src={person.src}></img>
         </div>
       )}
       <LoginButton />

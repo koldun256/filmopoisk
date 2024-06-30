@@ -1,5 +1,6 @@
 import Header from "../components/Header/Header";
 import StoreProvider from "./StoreProvider";
+import "../index.css";
 
 export default function RootLayout({
   children,
@@ -25,7 +26,7 @@ export default function RootLayout({
         <body>
           <div id="root">
             <Header />
-            <main>{children}</main>
+            {children}
           </div>
         </body>
       </html>

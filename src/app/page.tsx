@@ -1,3 +1,4 @@
+"use client";
 import MovieList from "../components/MovieList/MovieList";
 import SearchInput from "../features/search/ui/SearchInput/SearchInput";
 import SearchParams from "../features/search/ui/SearchParams/SearchParams";

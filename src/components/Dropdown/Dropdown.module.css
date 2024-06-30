@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.dropdown-toggle {
+.dropdownToggle {
   background-color: transparent;
   width: 100%;
   border-radius: 8px;
@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-.dropdown-menu {
+.dropdownMenu {
   position: absolute;
   border-radius: 8px;
   left: 0;
@@ -28,12 +28,12 @@
   padding: 0;
 }
 
-.dropdown-menu li {
+.dropdownMenu li {
   padding: 12px;
   overflow: hidden;
   cursor: pointer;
 }
 
-.dropdown-menu li:hover {
+.dropdownMenu li:hover {
   background-color: #ddd;
 }

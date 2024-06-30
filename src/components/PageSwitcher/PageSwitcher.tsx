@@ -21,14 +21,14 @@ export default function PageSwitcher({ total_pages }: Props) {
         className={`${classes.button} ${leftActive && classes.active}`}
         onClick={() => leftActive && setPage(active - 1)}
       >
-        <img src={leftActive ? left : leftDisabled} />
+        <img src={leftActive ? left.src : leftDisabled.src} />
       </div>
       <div className={classes.indicator}>{active}</div>
       <div
         className={`${classes.button} ${rightActive && classes.active}`}
         onClick={() => rightActive && setPage(active + 1)}
       >
-        <img src={rightActive ? right : rightDisabled} />
+        <img src={rightActive ? right.src : rightDisabled.src} />
       </div>
     </div>
   );

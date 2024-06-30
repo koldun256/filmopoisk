@@ -39,7 +39,7 @@
   object-fit: cover;
 }
 
-.poster-container {
+.posterContainer {
   aspect-ratio: 8/11;
   max-width: 160px;
 }
@@ -52,12 +52,12 @@
   margin-top: 8px;
 }
 
-.actors-container {
+.actorsContainer {
   display: flex;
   gap: 24px;
 }
 
-.score-container {
+.scoreContainer {
   position: absolute;
   top: 24px;
   right: 24px;
