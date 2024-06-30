@@ -2,12 +2,25 @@
   display: flex;
   width: 100vw;
   margin: 0;
-  padding: 10px;
-  background-color: rgb(219, 207, 39);
+  padding: 24px 32px 24px 32px;
+  background-color: #333;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
 .title {
-  font-size: large;
-  font-weight: bold;
-  color: black;
+  flex-grow: 1;
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 37.5px;
+  text-align: left;
+  color: white;
+  text-decoration: none;
+}
+
+.ava {
+  background-color: white;
+  border-radius: 50%;
+  padding: 7px 10px;
 }
