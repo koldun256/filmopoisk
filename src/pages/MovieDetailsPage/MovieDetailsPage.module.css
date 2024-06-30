@@ -7,9 +7,10 @@
   font-size: 20px;
   align-items: flex-start;
   gap: 24px;
+  position: relative;
 }
 
-.info img {
+.info > img {
   width: 400px;
   height: 500px;
   border-radius: 8px;
@@ -54,4 +55,11 @@
 .actors-container {
   display: flex;
   gap: 24px;
+}
+
+.score-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 100px;
 }
