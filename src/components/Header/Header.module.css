@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  width: 100vw;
+  width: 100%;
   margin: 0;
   padding: 24px 32px 24px 32px;
   background-color: #333;
@@ -16,7 +16,6 @@
   line-height: 37.5px;
   text-align: left;
   color: white;
-  text-decoration: none;
 }
 
 .ava {

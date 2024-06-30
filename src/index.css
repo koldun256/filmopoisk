@@ -3,3 +3,7 @@ body {
   background-color: #ededed;
   font-family: SF Pro Display;
 }
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,5 @@
+.movie-list {
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}

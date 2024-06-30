@@ -3,12 +3,13 @@ import Movie from "../../components/Movie/Movie";
 import { api } from "../../services/api";
 import { selectQuery } from "../../features/search/searchSlice";
 import { useAppSelector } from "../../store";
+import classes from "./MovieList.module.css";
 export default function MovieList() {
   const searchQuery = useAppSelector(selectQuery);
   const { data, error, isLoading } = api.useSearchQuery(searchQuery);
 
   return (
-    <div>
+    <div className={classes.movieList}>
       {isLoading && "Loading..."}
       {error && "Error"}
       {data &&

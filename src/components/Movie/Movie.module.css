@@ -1,0 +1,41 @@
+.movie {
+  background-color: white;
+  border-radius: 8px;
+  padding: 24px;
+  color: #1b1f23;
+  display: flex;
+  gap: 24px;
+}
+.movie > img {
+  width: 100px;
+  height: 120px;
+  border-radius: 8px;
+}
+.info > table {
+  border-spacing: 16px;
+  margin: -16px;
+}
+.title {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 16px;
+}
+.hint {
+  vertical-align: top;
+  width: 100px;
+  color: #ababab;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+}
+.data {
+  color: #1b1f23;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+}
