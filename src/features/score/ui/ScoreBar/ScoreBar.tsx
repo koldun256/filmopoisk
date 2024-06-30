@@ -19,6 +19,7 @@ export default function ScoreBar({ movieId }: Props) {
       <div
         className={`${classes.star} ${i <= score && classes.active}`}
         onClick={select(i)}
+        key={i}
       ></div>
     );
   return <div className={classes.scorebar}>{stars}</div>;
