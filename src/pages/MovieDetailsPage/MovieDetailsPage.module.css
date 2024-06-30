@@ -1,0 +1,57 @@
+.info {
+  background-color: white;
+  border-radius: 8px;
+  margin: 24px;
+  padding: 24px;
+  display: flex;
+  font-size: 20px;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.info img {
+  width: 400px;
+  height: 500px;
+  border-radius: 8px;
+}
+
+.info h2 {
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: left;
+  margin: 0;
+}
+
+.actors {
+  border-radius: 8px;
+  margin: 24px;
+}
+
+.actor img {
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-container {
+  aspect-ratio: 8/11;
+  max-width: 160px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.actors-container {
+  display: flex;
+  gap: 24px;
+}

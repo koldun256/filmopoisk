@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { ShortMovieInfo } from "../models/movie";
+import type { FullMovieInfo, ShortMovieInfo } from "../models/movie";
 import { GenresEnglish } from "../models/movie";
 import { RootState } from "../store";
 
@@ -31,7 +31,7 @@ export const api = createApi({
   reducerPath: "api",
   baseQuery,
   endpoints: (builder) => ({
-    getMovieById: builder.query<ShortMovieInfo, string>({
+    getMovieById: builder.query<FullMovieInfo, string>({
       query: (id) => `movie/${id}`,
     }),
     search: builder.query<SearchResponse, SearchQuery>({
