@@ -3,15 +3,15 @@ import type { FullMovieInfo, ShortMovieInfo } from "../models/movie";
 import { GenresEnglish } from "../models/movie";
 import { RootState } from "../store";
 
-export type SearchQuery = Partial<{
-  title: string;
-  genre: GenresEnglish;
-  release_year: string;
+export type SearchQuery = {
+  title?: string;
+  genre?: GenresEnglish;
+  release_year?: string;
   sort_by: "release_year" | "title" | "rating";
   order: "asc" | "desc";
   page: number;
   limit: number;
-}>;
+};
 
 export type SearchResponse = {
   search_result: ShortMovieInfo[];

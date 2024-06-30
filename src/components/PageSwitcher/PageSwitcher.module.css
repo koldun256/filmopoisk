@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  background-color: aliceblue;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.active {
+  background-color: red;
+}

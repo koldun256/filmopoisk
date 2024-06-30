@@ -11,7 +11,7 @@ const initialState: State = {
     sort_by: "rating",
     order: "desc",
     page: 1,
-    limit: 5,
+    limit: 10,
   },
 };
 
@@ -27,7 +27,15 @@ const searchSlice = createSlice({
       state: State,
       action: SetAction<P>
     ) {
-      state.searchQuery[action.payload[0]] = action.payload[1] || undefined;
+      const [key, val] = action.payload;
+      state.searchQuery.page = 1;
+      state.searchQuery[key] = val;
+    },
+    nextPage(state, _) {
+      state.searchQuery.page++;
+    },
+    prevPage(state, _) {
+      state.searchQuery.page--;
     },
   },
 });
