@@ -22,7 +22,7 @@ export type Actor = {
 };
 
 export type FullMovieInfo = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   release_year: number;

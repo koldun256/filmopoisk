@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
 export enum LoginStatus {
@@ -15,7 +15,10 @@ type State = {
 
 const initialState: State = { token: null, status: LoginStatus.LoggedOut };
 type Creds = { username: string; password: string };
-export const login = createAsyncThunk("auth/login", async (creds: Creds) => {
+export const login: AsyncThunk<string, Creds, any> = createAsyncThunk<
+  string,
+  Creds
+>("auth/login", async (creds: Creds) => {
   const response = await fetch("http://localhost:3030/api/v1/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
