@@ -17,22 +17,23 @@ export default function ScoreBar({ movieId }: Props) {
   };
   return (
     <table className={classes.scorebar}>
-      <tr>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <td>
-            <Star
-              selected={!!score && i + 1 <= score}
-              select={() => select(i + 1)}
-              key={i}
-            />
-          </td>
-        ))}
-      </tr>
-      <tr>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <td>{i + 1}</td>
-        ))}
-      </tr>
+      <tbody>
+        <tr>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <td key={i}>
+              <Star
+                selected={!!score && i + 1 <= score}
+                select={() => select(i + 1)}
+              />
+            </td>
+          ))}
+        </tr>
+        <tr>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <td key={i}>{i + 1}</td>
+          ))}
+        </tr>
+      </tbody>
     </table>
   );
 }
