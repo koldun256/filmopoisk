@@ -1,20 +1,16 @@
 import { useState } from "react";
 import classes from "./Dropdown.module.css";
 
-type Option<V extends string> = {
+type Option<V> = {
   text: string;
   value: V;
 };
-type Props<V extends string> = {
+type Props<V> = {
   options: Option<V>[];
   select: (value: V) => void;
   selected: V;
 };
-export default function Dropdown<V extends string>({
-  options,
-  select,
-  selected,
-}: Props<V>) {
+export default function Dropdown<V>({ options, select, selected }: Props<V>) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -29,9 +25,9 @@ export default function Dropdown<V extends string>({
 
       {isOpen && (
         <ul className={classes.dropdownMenu}>
-          {options.map(({ text, value }) => (
+          {options.map(({ text, value }, idx) => (
             <li
-              key={value}
+              key={idx}
               onClick={() => {
                 select(value);
                 setIsOpen(false);

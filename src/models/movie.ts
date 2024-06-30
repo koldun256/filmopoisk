@@ -1,4 +1,4 @@
-const GENRES_MAP = {
+export const GENRES_MAP = {
   comedy: "комедия",
   drama: "драма",
   action: "боевик",
@@ -11,6 +11,15 @@ const GENRES_MAP = {
   adventure: "приключения",
   musical: "мьюзикл",
   war: "военный",
+} as const;
+
+export const YEARS = {
+  "2009": "2009",
+  "2008": "2008",
+  "2007": "2007",
+  "2006": "2006",
+  "1990-2005": "1990-2005",
+  "1950-1989": "1950-1989",
 } as const;
 
 export type GenresEnglish = keyof typeof GENRES_MAP;
